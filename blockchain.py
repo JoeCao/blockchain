@@ -195,11 +195,12 @@ class Blockchain(object):
 
     def new_transaction(self, sender, recipient, amount, is_coinbase=False):
         """
-               Creates a new transaction to go into the next mined Block
-               :param sender: <str> Address of the Sender
-               :param recipient: <str> Address of the Recipient
-               :param amount: <int> Amount
-               :return: <int> The index of the Block that will hold this transaction
+               为下一个block增加一笔交易
+               :param sender: <str> 发起者的地址
+               :param recipient: <str> 接受者的地址
+               :param amount: <int> 费用
+               :param is_coinbase: <boolean> 是否是铸币交易，默认是False
+               :return: 无返回值
         """
 
         self.current_transactions.append({
