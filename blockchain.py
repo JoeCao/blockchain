@@ -160,7 +160,7 @@ class Blockchain(object):
         self.difficult_factor = difficult_factor
         self.nodes = set()
 
-        # 添加创世纪模块
+        # 添加创世纪块
         genesis_blockhash = reduce(lambda x, y: x + '0', [str(i) for i in range(0, 64)])
         genesis_timestamp = mktime(strptime('2011-01-12 21:51:50', '%Y-%m-%d %H:%M:%S'))
         # 第一笔coinbase交易
