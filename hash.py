@@ -24,24 +24,20 @@ xrange = custom_range
 
 block_sample = {
     "header": {
-        "difficult_factor": 3,
-        "last_block": "94d94a65106a3dfd8b8179e87884cfc40715979c2fec098284a4e57eec17b192",
+        "difficult_factor": 4,
+        "last_block": "0000000000000000000000000000000000000000000000000000000000000000",
         "merkle_tree": "01181212a283e760929f6b1628d903127c65e6fb5a9ad7fe94b790e699269221",
-        "nonce": 205,
-        "timestamp": 1507598741.885028,
-        "version": "0x02000000"
+        "nonce": 90447,
+        "timestamp": 1294840310.0,
+        "version": "0x20000000"
     },
-    "index": 2,
+    "index": 1,
+    "size": 380,
     "transactions": [
         {
-            "amount": 10,
-            "recipient": "a77f5cdfa2934df3954a5c7c7da5df1f",
-            "sender": "8527147fe1f5426f9dd545de4b27ee00"
-        },
-        {
-            "amount": 1,
-            "recipient": "25456127ff3c43dabb004819ea1249a6",
-            "sender": "0"
+            "amount": 50,
+            "recipient": "19000",
+            "sender": "03443b0403858402062f503253482f"
         }
     ]
 }
@@ -56,7 +52,7 @@ def mine(binary_stream, difficult_factor):
         temp = binary_stream.copy()
         temp.append('uint:32=' + str(nonce))
         # print temp.hex
-        digest = hashlib.sha256(hashlib.sha256(temp.tobytes()).hexdigest()).hexdigest()
+        digest = hashlib.sha256(hashlib.sha256(temp.tobytes()).digest()).hexdigest()
         # print digest
         if validate_proof(difficult_factor, digest):
             return nonce, digest
@@ -92,7 +88,7 @@ def block_hash(block):
     assert stream.length == 608
     stream.append('uint:32=' + str(block_header['nonce']))
     assert stream.length == 640
-    digest = hashlib.sha256(hashlib.sha256(stream.tobytes()).hexdigest()).hexdigest()
+    digest = hashlib.sha256(hashlib.sha256(stream.tobytes()).digest()).hexdigest()
     return digest
 
 
