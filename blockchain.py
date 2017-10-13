@@ -153,6 +153,34 @@ chain_sample = {
 }
 
 
+class TxIn(object):
+    def __init__(self, previous_hash, previous_index, script=b'', sequence=4294967295, ):
+        self.previous_hash = previous_hash
+        self.previous_index = previous_index
+        self.script = script
+        self.sequence = sequence
+
+    def __repr__(self):
+        return '{0}:{1}, script is '.format(self.previous_hash, self.previous_index, self.script)
+
+
+class TxOut(object):
+    def __init__(self, tx_hash, tx_index, value):
+        self.tx_hash = tx_hash
+        self.tx_index = tx_index
+        self.value = value
+
+    def __repr__(self):
+        return '{0}:{1}:with {2} satoshis'.format(self.tx_hash, self.tx_index, self.value)
+
+
+class Transaction(object):
+    def __init__(self, version, txs_in, txs_out, coin_base=False, lock_time=0):
+        self.version = version
+        self.lock_time = lock_time
+        self.txs_in = {}
+
+
 class Blockchain(object):
     def __init__(self, difficult_factor=4):
         self.chain = []
