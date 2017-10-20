@@ -3,13 +3,13 @@ from uuid import uuid4
 
 from flask import Flask, jsonify, request
 
-from blockchain import Blockchain
+from blockchain import BlockChain
 
 app = Flask(__name__)
 
 node_identifier = str(uuid4()).replace('-', '')
 
-blockchain = Blockchain()
+blockchain = BlockChain()
 
 
 @app.route('/')

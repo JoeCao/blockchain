@@ -21,7 +21,7 @@ def select_output_greedy(unspent, min_value):
     if greater:
         min_greater = min(greater)
         change = min_greater.value - min_value
-        return [min_greater], change
+        return [min_greater],
     # 将小于需要支付的费用的utxo按照从小到大排序
     lessers.sort(key=(lambda utxo: utxo.value), reverse=True)
     sum = 0
